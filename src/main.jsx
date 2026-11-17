@@ -40,7 +40,10 @@ function App() {
   const go = (p) => {
     setPrevPage(page);
     setPage(p);
-    window.scrollTo(0, 0);
+    // scroll the inner <main> element, not window
+    requestAnimationFrame(() => {
+      document.querySelector('main')?.scrollTo({ top: 0 });
+    });
   };
 
   const notify = (m) => {
@@ -75,7 +78,9 @@ function App() {
     setSelected(item);
     setPrevPage(from || page);
     setPage('detail');
-    window.scrollTo(0, 0);
+    requestAnimationFrame(() => {
+      document.querySelector('main')?.scrollTo({ top: 0 });
+    });
   };
 
   const submitClaim = () => {
